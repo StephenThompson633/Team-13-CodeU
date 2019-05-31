@@ -28,7 +28,7 @@ import java.util.List;
 import java.util.UUID;
 
 /** Provides access to the data stored in Datastore. */
-public class Datastore {
+public class Datastore{
 
   private DatastoreService datastore;
 
