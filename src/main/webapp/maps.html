@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Stephen's Tour</title>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBTWEIaJUhDBnNYm3HUosjUpz8UZfCL1tg"></script>
+  <script>
+    /** Creates a map that shows landmarks around Google. */
+    function createMap(){
+      const dmv = {lat: 38.768005, lng: -77.367780};
+      const map = new google.maps.Map(document.getElementById('map'), {
+        center: dmv,
+        zoom: 10
+      });
+
+      addLandmark(map, 38.7651, -76.8983, 'Clinton',
+          'Clinton:This is my hometown')
+      
+    }
+ 
+    /** Adds a marker that shows an info window when clicked. */
+    function addLandmark(map, lat, lng, title, description){
+      const marker = new google.maps.Marker({
+        position: {lat: lat, lng: lng},
+        map: map,
+        title: title
+      });
+    
+      const infoWindow = new google.maps.InfoWindow({
+        content: description
+      });
+      marker.addListener('click', function() {
+        infoWindow.open(map, marker);
+      });
+    }
+  </script>
+  <style>
+    #map{
+      width: 900px;
+      height: 500px;
+      border: thin solid black;
+    }
+  </style>
+</head>
+<body onload="createMap()">
+  <h1>Stephen's Tour</h1>
+  
+  <div id="map"></div>
+  <p>You're currently looking at the DMV Area</p>
+</body>
+</html>
