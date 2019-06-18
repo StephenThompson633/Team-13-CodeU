@@ -25,7 +25,7 @@ public class SentimentAnalysisServlet extends HttpServlet{
 
     // Output the sentiment score as html
     // A real project would probably store the score in Datastore
-    response.setContentType("text/html;");
+    response.setContentType("text2/html;");
     response.getOutputStream().println("<h1>Sentiment Analysis</h1>");
     response.getOutputStream().println("<p>You entered: " + message + "</p>");
     response.getOutputStream().println("<p>Sentiment analysis score: " + score + "</p>");
