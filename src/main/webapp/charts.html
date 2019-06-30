@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', { 'packages': ['table'] });
+        google.charts.setOnLoadCallback(drawTable);
+        function drawTable() {
+
+
+            var codeu_data = new google.visualization.DataTable();
+
+            codeu_data.addColumn('string', 'Name');
+            codeu_data.addColumn('number', 'Year');
+            codeu_data.addColumn('string', 'Classification')
+
+
+            codeu_data.addRows([
+                ["Adela", 19, "Junior"],
+                ["Yasmeen", 19, "Junior"],
+                ["Stephen", 19, "Junior"]
+
+            ]);
+
+            var table = new google.visualization.Table(document.getElementById('table_div'));
+
+            table.draw(codeu_data, { showRowNumber: true, width: '100%', height: '100%' });
+
+
+        }
+    </script>
+    <title>Code U: Using Google Charts API to Display Team 13 Data</title>
+</head>
+
+<body>
+    <h1>Code U: Using Google Charts API to Display Team 13 Data</h1>
+    <div id="table_div"></div>
+</body>
+
+</html>
