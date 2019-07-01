@@ -30,3 +30,11 @@ nav li {
   display: inline-block;
   margin-right: 10px
 }
+
+.container {
+  margin-top: 2%
+}
+
+.container-fluid {
+  height: 100%
+}
