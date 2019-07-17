@@ -1,6 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<script>
+    
+  // Fetch messages and add them to the page.
+  function fetchMessages(){
+    const url = '/feed';
+    fetch(url).then((response) => {
+      return response.json();
+    }).then((messages) => {
+      const messageContainer = document.getElementById('message-container');
+      if(messages.length == 0){
+       messageContainer.innerHTML = '<p>There are no posts yet.</p>';
+      }
+      else{
+       messageContainer.innerHTML = '';  
+      }
+      messages.forEach((message) => {  
+       const messageDiv = buildMessageDiv(message);
+       messageContainer.appendChild(messageDiv);
+      });
+    });
+  }
+  
+  function buildMessageDiv(message){
+   const usernameDiv = document.createElement('div');
+   usernameDiv.classList.add("left-align");
+   usernameDiv.appendChild(document.createTextNode(message.user));
+   
+   const timeDiv = document.createElement('div');
+   timeDiv.classList.add('right-align');
+   timeDiv.appendChild(document.createTextNode(new Date(message.timestamp)));
+   
+   const headerDiv = document.createElement('div');
+   headerDiv.classList.add('message-header');
+   headerDiv.appendChild(usernameDiv);
+   headerDiv.appendChild(timeDiv);
+   
+   const bodyDiv = document.createElement('div');
+   bodyDiv.classList.add('message-body');
+   bodyDiv.appendChild(document.createTextNode(message.text));
+   
+   const messageDiv = document.createElement('div');
+   messageDiv.classList.add("message-div");
+   messageDiv.appendChild(headerDiv);
+   messageDiv.appendChild(bodyDiv);
+   
+   return messageDiv;
+  }
+  
+  // Fetch data and populate the UI of the page.
+  function buildUI(){
+   fetchMessages();
+  }
+</script>
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -40,9 +93,9 @@
             <!-- Here's the magic. Add the .animate and .slide-in classes to your .dropdown-menu and you're all set! -->
             <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="/profile.html">Profile</a>
-              <a class="dropdown-item" href="#">Maps</a>
+              <a class="dropdown-item" href="#">Search</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Home</a>
+              <a class="dropdown-item" href="/landingpage.html">Home</a>
             </div>
           </li>
         </ul>
@@ -67,5 +120,27 @@
       </div>
 
     </div>
+  </div>
+</body>
+
+<body>
+  <div class="container">
+      <div class="col-sm-8">
+        <h2>Reviews</h2>
+        <form id="message-form" action="/messages" method="POST" class="hidden">
+      Write a new review:
+      <br/>
+      <textarea name="text" id="message-input" rows="4" cols="100"></textarea>
+      <br/>
+      <input type="submit" value="Submit">
+    </form>
+        <body onload="buildUI()">
+ <div id="content">
+  <hr/>
+  <div id="message-container">Loading...</div>
+ </div>
+</body>
+      </div>
+      </div>
   </div>
 </body>
