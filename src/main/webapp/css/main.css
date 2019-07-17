@@ -38,3 +38,7 @@ nav li {
 .container-fluid {
   height: 100%
 }
+
+.rounded-circle {
+  radius: 50%
+}

@@ -128,4 +128,44 @@ public class Datastore{
   return results.countEntities(FetchOptions.Builder.withLimit(1000));
  }
 
+ public void storeProfile(Profile profile){
+   Entity profileEntity = new Entity("Profile", profile.getId().toString());
+   profileEntity.setProperty("user", profile.getUser());
+   profileEntity.setProperty("name", profile.getName());
+   profileEntity.setProperty("handle", profile.getHandle());
+   profileEntity.setProperty("website", profile.getWebsite());
+   profileEntity.setProperty("textures", profile.getTextures());
+   profileEntity.setProperty("photo", profile.getPhoto());
+
+   datastore.put(profileEntity);
+ }
+
+ public Profile getProfile(String user) {
+   Profile profile = null;
+
+   Query query =
+       new Query("Profile")
+           .setFilter(new Query.FilterPredicate("user", FilterOperator.EQUAL, user));
+   PreparedQuery results = datastore.prepare(query);
+
+   // probably don't need this for loop but it isn't hurting?
+   for (Entity entity : results.asIterable()) {
+     try {
+       String idString = entity.getKey().getName();
+       UUID id = UUID.fromString(idString);
+       String name = (String) entity.getProperty("name");
+       String handle = (String) entity.getProperty("handle");
+       String website = (String) entity.getProperty("website");
+       String textures = (String) entity.getProperty("textures");
+       String photo = (String) entity.getProperty("photo");
+
+       profile = new Profile(id, user, name, handle, website, textures, photo);
+     } catch (Exception e) {
+       System.err.println("Error reading profile.");
+       System.err.println(entity.toString());
+       e.printStackTrace();
+     }
+   }
+   return profile;
+ }
 }

@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <title>Profile</title>
     <link rel="stylesheet" href="/css/main.css">
 
     <!-- Required meta tags -->
@@ -23,10 +24,10 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 
-    <script src="/js/profile-loader.js"></script>
-    <title id='page-title'></title>
+    <script src="/js/profile-init.js"></script>
 
 </head>
+
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
@@ -53,30 +54,33 @@
     </div>
   </nav>
 
+
   <br>
 
 <body onLoad="buildUI()">
-  <div id="profile-container">Loading...</div>
-
   <div class="container">
+    <form id="profile-form" action="/profile" method="POST" class="hidden">
+      Enter your profile data:
+      <br/>
+      <label for="name-input">Name:</label>
+      <input type="text" name="name" id="name-input"></input>
+      <br>
+      <label for="handle-input">Social Media Handle:</label>
+      <input type="text" name="handle" id="handle-input"></input>
+      <br>
+      <label for="website-input">Website URL</label>
+      <input type="url" name="website" id="website-input"></input>
+      <br>
+      <label for="textures-input">Hair Textures you specialize in:</label>
+      <input type="text" name="textures" id="textures-input"></input>
+      <br>
+      <label for="photo-input">Link to your profile photo:</label>
+      <input type="text" name="photo" id="photo-input"></type>
+      <br/>
+      <input type="submit" value="Submit">
+    </form>
+    <hr/>
+  </div>
 
 
-    <div class="row">
-      <div class="col-sm-3">
-
-
-
-
-        <img class="rounded-circle img-fluid" src="http://www.clker.com/cliparts/C/N/O/F/T/X/blank-profile-hi.png">
-      </div>
-      <div class="col-sm-8">
-        <h2>Harry S. Stylist</h2>
-        <p><a class="text-muted" href="">@harry_styles_hair</a></p>
-        <p><a href="https://google.com">harryshairsalon.com</a></p>
-        <br>
-        <p class="text-muted"><strong>Textures:</strong> straight • wavy </p>
-      </div>
-      </div>
-
-    </div>
 </body>
