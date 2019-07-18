@@ -1,0 +1,24 @@
+{
+    "searchResults": [
+        {
+            "Name": "Harry S Stylist",
+            "adress": "126 Conch St",
+            "photo": ""
+        },
+        {
+            "Name": "Barry the Barber",
+            "address": "124 Conch St",
+            "photo": ""
+        },
+        {
+            "Name": "Helen the Haircutter",
+            "address": "122 Conch St",
+            "photo": ""
+        },
+        {
+            "Name": "Helen the Haircutter",
+            "address": "122 Conch St",
+            "photo": ""
+        }
+    ]
+}
