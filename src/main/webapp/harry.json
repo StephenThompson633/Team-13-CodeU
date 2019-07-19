@@ -1,0 +1,15 @@
+{
+  "harry": {
+    "name": "Harry S. Stylist",
+    "handle": "harry_styles_hair",
+    "website": "https://harrystyleshair.com",
+    "textures": ["curly", "straight", "textured", "thick", "thin"],
+    "profilePic": "http://www.clker.com/cliparts/C/N/O/F/T/X/blank-profile-hi.png",
+    "photos": ["https://i.ytimg.com/vi/eYwWnjLxFWM/maxresdefault.jpg",
+      "https://s3.amazonaws.com/lowres.jantoo.com/health-beauty-bad_hairstyle-bad_hair_day-haircut-garden_shear-bad_haircut-949000430_low.jpg",
+      "https://previews.123rf.com/images/pandavector/pandavector1708/pandavector170804119/84891263-hair-cutting-with-scissors-womens-haircut-single-icon-in-cartoon-style-vector-symbol-stock-illustrat.jpg",
+      "https://cdn3.vectorstock.com/i/1000x1000/58/12/hairdresser-making-a-haircut-to-a-young-man-vector-20595812.jpg",
+      "https://previews.123rf.com/images/sabelskaya/sabelskaya1707/sabelskaya170701204/83141880-hairdresser-cutting-hair-making-haircut-for-blond-woman-who-uses-smartphone-meanwhile-cartoon-vector.jpg",
+      "https://image.shutterstock.com/image-vector/young-man-went-do-haircut-260nw-441987187.jpg"]
+  }
+}

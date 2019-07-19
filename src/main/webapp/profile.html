@@ -2,7 +2,7 @@
 <html lang="en">
 
 <script>
-    
+
   // Fetch messages and add them to the page.
   function fetchMessages(){
     const url = '/feed';
@@ -14,45 +14,94 @@
        messageContainer.innerHTML = '<p>There are no posts yet.</p>';
       }
       else{
-       messageContainer.innerHTML = '';  
+       messageContainer.innerHTML = '';
       }
-      messages.forEach((message) => {  
+      messages.forEach((message) => {
        const messageDiv = buildMessageDiv(message);
        messageContainer.appendChild(messageDiv);
       });
     });
   }
-  
+
   function buildMessageDiv(message){
    const usernameDiv = document.createElement('div');
    usernameDiv.classList.add("left-align");
    usernameDiv.appendChild(document.createTextNode(message.user));
-   
+
    const timeDiv = document.createElement('div');
    timeDiv.classList.add('right-align');
    timeDiv.appendChild(document.createTextNode(new Date(message.timestamp)));
-   
+
    const headerDiv = document.createElement('div');
    headerDiv.classList.add('message-header');
    headerDiv.appendChild(usernameDiv);
    headerDiv.appendChild(timeDiv);
-   
+
    const bodyDiv = document.createElement('div');
    bodyDiv.classList.add('message-body');
    bodyDiv.appendChild(document.createTextNode(message.text));
-   
+
    const messageDiv = document.createElement('div');
    messageDiv.classList.add("message-div");
    messageDiv.appendChild(headerDiv);
    messageDiv.appendChild(bodyDiv);
-   
+
    return messageDiv;
   }
-  
+
   // Fetch data and populate the UI of the page.
   function buildUI(){
    fetchMessages();
   }
+
+  // Profile logic
+  function fetchProfile(){
+    var pic = document.querySelector('.col-sm-3');
+    var profileSection = document.querySelector('.col-sm-8');
+    fetch('harry.json')
+        .then(function (response) {
+            if (!response.ok) {
+                throw new Error("HTTP error, status = " + response.status);
+            }
+            return response.json();
+        })
+        .then(function (json) {
+            var div = document.createElement('div');
+            var picDiv = document.createElement('div');
+
+            div.innerHTML = '<br>';
+            div.innerHTML += '<h2>' + json.harry.name + '</h2>';
+            div.innerHTML += '<a class="text-muted" target="_blank" href="https://instagram.com/' + json.harry.handle + '/"> @' + json.harry.handle + '</a><br>';
+            div.innerHTML += '<a href=' + json.harry.website + ' target="_blank">' + json.harry.website + '</a>';
+            div.innerHTML += '<p><strong>Textures: </strong></p>';
+
+            for (var i = 0; i < json.harry.textures.length; i++) {
+              var tag = document.createElement('button');
+              tag.innerHTML = json.harry.textures[i];
+              div.appendChild(tag);
+            }
+            div.innerHTML += '<hr>';
+
+            for (var j = 0; j < json.harry.photos.length; j++) {
+              div.innerHTML += '<img src="' + json.harry.photos[j] + '"></img>';
+            }
+
+            div.innerHTML += '</div>';
+            div.innerHTML += '</div>';
+            picDiv.innerHTML = '<br>';
+            picDiv.innerHTML += '<img src="' + json.harry.profilePic + '" class="rounded-circle"></img>';
+            profileSection.appendChild(div);
+            pic.appendChild(picDiv);
+        })
+        .catch(function (error) {
+            var p = document.createElement('p');
+            p.appendChild(
+                document.createTextNode('Error: ' + error.message)
+            );
+            document.body.insertBefore(p, profileSection);
+        });
+  }
+
 </script>
 <head>
     <!-- Required meta tags -->
@@ -73,6 +122,13 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+
+    <style>
+        img {
+            width: 200px;
+            height: 200px;
+        }
+    </style>
 
     <title>Profile</title>
 </head>
@@ -103,22 +159,13 @@
     </div>
   </nav>
 
-<body>
+<body onload="fetchProfile()">
   <div class="container">
     <div class="row">
       <div class="col-sm-3">
-        <img src="https://image.shutterstock.com/image-vector/cartoon-barber-comb-scissors-vector-260nw-745746409.jpg" alt="Barber image">
       </div>
       <div class="col-sm-8">
-        <h2>Harry S. Stylist</h2>
-        <p><strong>@harry_styles_hair</strong></p>
-        <p><a href="https://google.com">harryshairsalon.com</a></p>
-        <br>
-        <p><strong>Services:</strong> cut * color </p>
-        <p><strong>Textures:</strong> straight * wavy </p>
       </div>
-      </div>
-
     </div>
   </div>
 </body>
@@ -137,8 +184,7 @@
         <body onload="buildUI()">
  <div id="content">
   <hr/>
-  <div id="message-container">Loading...</div>
- </div>
+
 </body>
       </div>
       </div>
