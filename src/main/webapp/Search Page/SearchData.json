@@ -3,22 +3,22 @@
         {
             "Name": "Harry S Stylist",
             "adress": "126 Conch St",
-            "photo": ""
+            "photo": "https://i.pinimg.com/originals/f6/a9/9a/f6a99a8ceaec147b7c480615e4980e1d.jpg"
         },
         {
             "Name": "Barry the Barber",
             "address": "124 Conch St",
-            "photo": ""
+            "photo": "http://i.stack.imgur.com/8ywqe.png?s=32&g=1"
         },
         {
             "Name": "Helen the Haircutter",
             "address": "122 Conch St",
-            "photo": ""
+            "photo": "https://i.pinimg.com/originals/f6/a9/9a/f6a99a8ceaec147b7c480615e4980e1d.jpg"
         },
         {
             "Name": "Helen the Haircutter",
             "address": "122 Conch St",
-            "photo": ""
+            "photo": "https://i.pinimg.com/originals/f6/a9/9a/f6a99a8ceaec147b7c480615e4980e1d.jpg"
         }
     ]
 }
