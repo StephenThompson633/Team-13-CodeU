@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width initial-scale=1, shrink-to-fit= no">
+  <meta charset="utf-8">
+
+  <title>Fetch json example</title>
+
+  <link rel="stylesheet" href="style.css">
+  <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+
+<body>
+  
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <h1>Cutz for You</h1>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Menu
+            </a>
+            <!-- Here's the magic. Add the .animate and .slide-in classes to your .dropdown-menu and you're all set! -->
+            <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/profile.html">Profile</a>
+              <a class="dropdown-item" href="/searchgpage.html">Search</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Home</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class = "container" style="margin-left: 45%">
+  <div class="input-group" style="width: 200px; text-align: center">
+      <input type="text" class="form-control" placeholder="Search">
+      <div class="input-group-append">
+        <button class="btn btn-secondary" type="button">
+          <i class="fa fa-search"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div id="img-container">
+        <!--read from script  -->
+
+    </div>
+
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+</body>
+<script>
+  var data = {
+    "search": [{
+      "bannerImg1": "https://i.pinimg.com/originals/f6/a9/9a/f6a99a8ceaec147b7c480615e4980e1d.jpg",
+      "adress": "Address: 126 Conch St",
+      "word": 'Barry the Barber'
+    },
+    {
+      "bannerImg1": "http://pophaircuts.com/images/2017/09/trendy-messy-hairstyles-for-short-hair-women-short-haircut-ideas.jpg",
+      "adress": "Address: 125 Conch St",
+      "word": "Harry S Stylist"
+    },
+    {
+      "bannerImg1": "https://i.ytimg.com/vi/W8_mqbJtoYk/maxresdefault.jpg",
+      "adress": "Address: 124 Conch St",
+      "word": "Helen the Cutter"
+    }]
+  };
+  data.search.forEach(function (obj) {
+
+
+
+    var divone = document.createElement("DIV");
+
+    divone.setAttribute("class", "card");
+
+    divone.setAttribute("style", "width:400px");
+
+
+
+    var divtwo = document.createElement("DIV");
+
+    divtwo.setAttribute("class", "card-body");
+
+    divone.appendChild(divtwo);
+
+    console.log(divone);
+
+
+
+    var h4 = document.createElement("H4");
+    h4.textContent = obj.word;
+    console.log(h4);
+    divtwo.appendChild(h4);
+    console.log(divone);
+
+    var address = document.createElement("P");
+    address.textContent = obj.adress;
+    divtwo.appendChild(address);
+
+    
+
+
+    var img = new Image();
+
+    img.src = obj.bannerImg1;
+
+    img.setAttribute("class", "card-img-top");
+
+    img.setAttribute("alt", "Card Image");
+
+    divone.appendChild(img);
+
+
+
+    //document.getElementById("hello world").textContent = obj.word;;
+
+    document.getElementById("img-container").appendChild(divone);
+
+  });
+  
+</script>
+
+</html>
