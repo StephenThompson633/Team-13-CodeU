@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width initial-scale=1, shrink-to-fit= no">
   <meta charset="utf-8">
 
-  <title>Fetch json example</title>
+  <title>Search Page</title>
 
   <link rel="stylesheet" href="style.css">
   <!--[if lt IE 9]>
@@ -112,11 +112,13 @@
     console.log(divone);
 
 
-
+    var a = document.createElement("A");
+    a.href = "/profile.html";
     var h4 = document.createElement("H4");
     h4.textContent = obj.word;
-    console.log(h4);
-    divtwo.appendChild(h4);
+    a.appendChild(h4);
+    console.log(a);
+    divtwo.appendChild(a);
     console.log(divone);
 
     var address = document.createElement("P");
@@ -145,5 +147,11 @@
   });
 
 </script>
+
+<footer class="container py-4 bg-dark text-white-50" style = "bottom: 0; width: 100%">
+    <div class="container text-center">
+      <small>Copyright &copy; Team 13 CodeU</small>
+    </div>
+</footer>
 
 </html>
