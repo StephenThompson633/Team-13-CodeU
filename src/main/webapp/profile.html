@@ -2,7 +2,7 @@
 <html lang="en">
 
 <script>
-    
+
   // Fetch messages and add them to the page.
   function fetchMessages(){
     const url = '/feed';
@@ -14,41 +14,41 @@
        messageContainer.innerHTML = '<p>There are no posts yet.</p>';
       }
       else{
-       messageContainer.innerHTML = '';  
+       messageContainer.innerHTML = '';
       }
-      messages.forEach((message) => {  
+      messages.forEach((message) => {
        const messageDiv = buildMessageDiv(message);
        messageContainer.appendChild(messageDiv);
       });
     });
   }
-  
+
   function buildMessageDiv(message){
    const usernameDiv = document.createElement('div');
    usernameDiv.classList.add("left-align");
    usernameDiv.appendChild(document.createTextNode(message.user));
-   
+
    const timeDiv = document.createElement('div');
    timeDiv.classList.add('right-align');
    timeDiv.appendChild(document.createTextNode(new Date(message.timestamp)));
-   
+
    const headerDiv = document.createElement('div');
    headerDiv.classList.add('message-header');
    headerDiv.appendChild(usernameDiv);
    headerDiv.appendChild(timeDiv);
-   
+
    const bodyDiv = document.createElement('div');
    bodyDiv.classList.add('message-body');
    bodyDiv.appendChild(document.createTextNode(message.text));
-   
+
    const messageDiv = document.createElement('div');
    messageDiv.classList.add("message-div");
    messageDiv.appendChild(headerDiv);
    messageDiv.appendChild(bodyDiv);
-   
+
    return messageDiv;
   }
-  
+
   // Fetch data and populate the UI of the page.
   function buildUI(){
    fetchMessages();
@@ -93,7 +93,7 @@
             <!-- Here's the magic. Add the .animate and .slide-in classes to your .dropdown-menu and you're all set! -->
             <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="/profile.html">Profile</a>
-              <a class="dropdown-item" href="#">Search</a>
+              <a class="dropdown-item" href="/searchpage.html">Search</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="/landingpage.html">Home</a>
             </div>
